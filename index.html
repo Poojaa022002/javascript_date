@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Information</title>
+    <link href="boostrap-css-js\bootstrap-5.3.3-dist\css\bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Date Information Form</h2>
+    <form id="infoForm">
+        <div class="form-group row mt-3">
+            <label for="name" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" placeholder="Enter your name">
+            </div>
+        </div>
+
+        <div class="form-group row mt-lg-3">
+            <label for="date" class="col-sm-2 col-form-label">Date</label>
+            <div class="col-sm-10">
+                <input type="date" class="form-control" id="date">
+            </div>
+        </div>
+
+        <div class="form-group row mt-lg-3">
+            <label for="day" class="col-sm-2 col-form-label">Day</label>
+            <div class="col-sm-10">
+                <select id="day" class="form-control">
+                    <option value="">Select a Day</option>
+                    <option value="Sunday">Sunday</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row mt-lg-3">
+            <label for="destination" class="col-sm-2 col-form-label">Destination</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="destination" placeholder="Enter your destination">
+            </div>
+        </div>
+
+        <div class="text-center mt-lg-3 ">
+            <button type="button" id="sub" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+
+    <div id="resultCard" class="mt-4 card" style="display: none;">
+        <div class="card-body">
+            <h5 class="card-title">Result</h5>
+            <p class="card-text">Name: <span id="displayName"></span></p>
+            <p class="card-text">Date: <span id="displayDate"></span></p>
+            <p class="card-text">Destination: <span id="displayDestination"></span></p>
+        </div>
+    </div>
+
+    <div class="text-center mt-4 mt-sm-5">
+        <button type="button" class="btn btn-secondary mr-2" onclick="checkDate()">Check Date</button>
+        <button type="button" class="btn btn-secondary mr-2" onclick="checkMonth()">Check Month</button>
+        <button type="button" class="btn btn-secondary mr-2" onclick="checkYear()">Check Year</button>
+        <button type="button" class="btn btn-secondary" onclick="checkWeek()">Check Day</button>
+    </div>
+</div>
+
+<script>
+        document.getElementById('sub').addEventListener('click', function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const date = document.getElementById('date').value;
+        const destination = document.getElementById('destination').value;
+
+        document.getElementById('displayName').textContent = name;
+        document.getElementById('displayDate').textContent = date;
+        document.getElementById('displayDestination').textContent = destination;
+
+        document.getElementById('resultCard').style.display = 'block';
+    });
+
+    function checkDate() {
+        const dateValue = document.getElementById('date').value;
+        if (dateValue) {
+            const day = new Date(dateValue).getDate();
+            alert("Selected Date: " + day);
+        } else {
+            alert("Please select a date.");
+        }
+    }
+
+    function checkMonth() {
+        const dateValue = document.getElementById('date').value;
+        if (dateValue) {
+            const month = new Date(dateValue).getMonth() + 1;
+            alert("Selected Month: " + month);
+        } else {
+            alert("Please select a date.");
+        }
+    }
+
+    function checkYear() {
+        const dateValue = document.getElementById('date').value;
+        if (dateValue) {
+            const year = new Date(dateValue).getFullYear();
+            alert("Selected Year: " + year);
+        } else {
+            alert("Please select a date.");
+        }
+    }
+
+    function checkWeek() {
+        const dayName = document.getElementById('day').value;
+        if (dayName) {
+            alert("Selected Day: " + dayName);
+        } else {
+            alert("Please select a day.");
+        }
+    }
+</script>
+</body>
+</html>
